@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&family=Allerta+Stencil&family=Ubuntu+Mono:wght@700&display=swap');
+
 /* Design System - Drawback Vix Platform */
 :root {
   --bg-primary: #ffffff;
@@ -481,5 +483,43 @@ input:checked + .switch-slider:before {
   0% { transform: translateX(-100%); }
   50% { transform: translateX(100%); }
   100% { transform: translateX(100%); }
+}
+
+/* Print styles for Chassis Label Generator */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Hide all UI components during print */
+  header, footer, nav, aside, .btn, .no-print, .dashboard-sidebar, .dashboard-header, .toast-container {
+    display: none !important;
+  }
+  
+  /* Clean up root boundaries */
+  #root, main, .dashboard-container, .glass-panel:not(.print-label) {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Format and page breaks for label kits */
+  .print-kit-wrapper {
+    page-break-after: always !important;
+    break-after: page !important;
+    margin-bottom: 0 !important;
+    display: block !important;
+  }
+  
+  /* Ensure backgrounds and borders render in print dialog */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }
 
